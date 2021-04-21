@@ -11,7 +11,7 @@ class Picaduras():
         try:
           picaduras = web.input()
           texto=(picaduras["texto"])
-          key="aa2111f0-a266-11eb-8dd7-7bf9ce57255263cd7076-2980-48cd-8569-8856be70a56e"
+          key="41bb8fa0-a270-11eb-a5d3-577120b8d016ac764cce-05bf-4ed5-98fb-84627ae6b761"
           url="https://machinelearningforkids.co.uk/api/scratch/" + key + "/classify"
           response = requests.get(url, params={ "data" : texto})
           if response.ok:
@@ -20,15 +20,15 @@ class Picaduras():
             label = topMatch["class_name"]
             confidence = topMatch["confidence"]
             data = {}
-            data["resultado: "] = label
-            data["confianza: "] = confidence
+            data["Tipo: "] = label
+            data["%"] = confidence
             result = json.dumps(data)
             return result       
           else:
             response.raise_for_status()
         except:
           data = {}
-          data["mensaje"] = "**No reconocido**"
+          data["mensaje"] = "**SINTOMA NO RECONOCIDO**"
           return json.dumps(data)
 
 if __name__ == "__main__":
